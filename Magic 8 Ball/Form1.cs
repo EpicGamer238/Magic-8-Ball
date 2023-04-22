@@ -1,9 +1,25 @@
 /* HEADER:
  * Author: Simon Wunderlich
  * For Unit 1 & 2 Computing
- * Date of last edit: 01/04/23
- * 
+ * Date of last edit: 22/04/23
+ *
  * SUMMARY: Application that outputs a string of text pulled randomly from a randomly selected word list of either positive, negativ, or neutral answers
+ */
+
+/*PSUEDOCODE
+ * START
+ * LIST positiveWords <- ...
+ * LIST neutralWords <- ...
+ * LIST negativeWords <- ...
+ *
+ * LIST wordBank ADD positiveWords, neutralWords, negativeWords
+ * LIST frequencies ADD 30, 90, 100
+ *
+ * NUMERICAL rand <- RANDOM NUMBER FROM 0 TO 100
+ *
+ * FOR x <- COUNT 3
+ *  IF frequencies[x] => rand THEN
+ *      DISPLAY RANDOM ITEM FROM wordBank[x]
  */
 
 namespace Magic_8_Ball
@@ -65,12 +81,12 @@ namespace Magic_8_Ball
             current.Add("PLACEHOLDER");
 
             //Defines wordbank with the three wordlists
-            _wordBank = new List<string[]>(new string[][] { _negList, _posList, _medList });
+            _wordBank = new List<string[]> { _negList, _posList, _medList };
         }
 
         public void magic()
         {
-            //Adds current magi 8 ball text to 'current' and removes the first element  
+            //Adds current magic 8 ball text to 'current' and removes the first element  
             current.Add(label1.Text);
             current.RemoveAt(0);
 
@@ -91,7 +107,7 @@ namespace Magic_8_Ball
             int value = rng.Next(total + 1);
 
             //Iterates through the word banks' frequencies until it finds a frequency less than value. It then returns a random string from the corresponding word list
-            for(int x = 0;  x < freq.Length; x++)
+            for (int x = 0; x < freq.Length; x++)
             {
 
                 //Checks if currently iterating frequency is greater than value
